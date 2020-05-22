@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
+using TaleWorlds.Localization;
 
 namespace MCM.Abstractions.Settings.Base
 {
@@ -45,7 +46,7 @@ namespace MCM.Abstractions.Settings.Base
         }
         public virtual IDictionary<string, Func<BaseSettings>> GetAvailablePresets() => new Dictionary<string, Func<BaseSettings>>()
         {
-            {"Default", CreateNew}
+            {new TextObject("{=BaseSettings_Default}Default").ToString(), CreateNew}
         };
 
         public virtual List<SettingsPropertyGroupDefinition> GetSettingPropertyGroups() => GetUnsortedSettingPropertyGroups()

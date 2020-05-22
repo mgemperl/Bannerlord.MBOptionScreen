@@ -10,7 +10,7 @@ namespace MCM.Abstractions.Settings.Models
 {
     public class SettingsPropertyGroupDefinition
     {
-        public const string DefaultGroupName = "Misc";
+        public static readonly string DefaultGroupName = new TextObject("{=SettingsPropertyGroupDefinition_Misc}Misc").ToString();
 
         protected readonly TextObject _groupName;
         protected readonly TextObject _groupNameOverride;
@@ -36,8 +36,8 @@ namespace MCM.Abstractions.Settings.Models
 
         public SettingsPropertyGroupDefinition(string groupName, string groupNameOverride = "", int order = -1)
         {
-            _groupName = new TextObject(groupName, null);
-            _groupNameOverride = new TextObject(groupNameOverride ?? "", null);
+            _groupName = new TextObject(groupName);
+            _groupNameOverride = new TextObject(groupNameOverride ?? "");
             GroupName = string.IsNullOrWhiteSpace(groupNameOverride) ? groupName : groupNameOverride!;
             Order = order;
         }
